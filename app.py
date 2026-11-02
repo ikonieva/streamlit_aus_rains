@@ -51,13 +51,8 @@ tab1, tab2, tab3 = st.tabs(["Analytics", "Raw Data", "Settings"])
 
 with tab1:
     st.header("Analytics View")
-    #st.bar_chart(data, x="Location", y="RainToday")
-    #mean_values = data.groupby('Location').mean().reset_index()
-    #st.dataframe(mean_values)
     st.dataframe(data.describe().round(2))
-        # Bar Chart for Rainy Days per Location
     rainy_days = data[data['RainToday'] == 'Yes'].groupby('Location').size().reset_index()
-    #st.dataframe(rainy_days)
     rainy_days.columns = ["Location", "Rainy Days"]
     st.bar_chart(rainy_days, x="Location", y="Rainy Days", color="Location")
 
